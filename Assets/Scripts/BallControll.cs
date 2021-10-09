@@ -5,14 +5,60 @@ using UnityEngine;
 public class BallControll : MonoBehaviour
 {
     private Rigidbody2D rb;
-    public float xInitialForce;
-    public float yInitialForce;
+    //public float xInitialForce;
+    //public float yInitialForce;
+
+    public float speed;
+    public const string Right = "right";
+    public const string Left = "left";
+    public const string Up = "up";
+    public const string Down = "down";
+
+    string buttonPressed;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
 
         RestartGame();
+    }
+
+    void Update()
+    {
+        if(Input.GetKey(KeyCode.W))
+        {
+            buttonPressed = Up;
+        }else if(Input.GetKey(KeyCode.S))
+        {
+            buttonPressed = Down;
+        }else if(Input.GetKey(KeyCode.A))
+        {
+            buttonPressed = Left;
+        }else if(Input.GetKey(KeyCode.D))
+        {
+            buttonPressed = Right;
+        }else
+        {
+            buttonPressed = null;;
+        }
+    }
+
+    void FixedUpdate()
+    {
+        if(buttonPressed == Right)
+        {
+            rb.AddForce(new Vector2(speed, 0));
+        }else if(buttonPressed == Left)
+        {
+            rb.AddForce(new Vector2(-speed,0));
+        }else if(buttonPressed == Up)
+        {
+            rb.AddForce(new Vector2(0, speed));
+        }else if(buttonPressed == Down)
+        {
+            rb.AddForce(new Vector2(0, -speed));
+        }else
+        {}
     }
 
     void ResetBall()
@@ -24,7 +70,7 @@ public class BallControll : MonoBehaviour
         rb.velocity = Vector2.zero;
     }
 
-    void PushBall()
+   /*void PushBall()
     {
         //untuk random arah bola
         float randomDirection = Random.Range(0,2);
@@ -38,7 +84,7 @@ public class BallControll : MonoBehaviour
         {
             rb.AddForce(new Vector2(xInitialForce, yInitialForce));
         }
-    }
+    }*/
 
     void RestartGame()
     {
@@ -46,6 +92,6 @@ public class BallControll : MonoBehaviour
         ResetBall();
 
         //bola bergerak
-        Invoke("PushBall", 0.01f);
+        //Invoke("PushBall", 0.01f);
     }
 }
