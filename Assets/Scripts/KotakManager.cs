@@ -11,7 +11,7 @@ public class KotakManager : MonoBehaviour
 
     void Start(){
         //Mengeksekusi fungs Spawn setiap beberapa detik sesui dengan nilai spawnTime
-        InvokeRepeating("Spawn", spawnTime, spawnTime);
+        InvokeRepeating("Spawn", 1f, spawnTime);
     }
 
     void Spawn(){
@@ -22,7 +22,7 @@ public class KotakManager : MonoBehaviour
 
         //Mendapatkan nilai random
        int spawnPointIndex = Random.Range(0, spawnPoints.Length);
-       int spawnKotak = Random.Range(0, 3);
+       int spawnKotak = Random.Range(0, 1);
 
         //Memduplikasi kotak
         Factory.FactoryMethod(spawnKotak, spawnPoints[spawnPointIndex]);
