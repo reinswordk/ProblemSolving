@@ -25,4 +25,9 @@ public class Scenee : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void ChangeScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
+    }
 }
