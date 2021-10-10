@@ -22,7 +22,7 @@ public class KotakManager : MonoBehaviour
 
         //Mendapatkan nilai random
        int spawnPointIndex = Random.Range(0, spawnPoints.Length);
-       int spawnKotak = Random.Range(0, 1);
+       int spawnKotak = Random.Range(0, 3);
 
         //Memduplikasi kotak
         Factory.FactoryMethod(spawnKotak, spawnPoints[spawnPointIndex]);
