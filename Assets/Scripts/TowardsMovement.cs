@@ -10,6 +10,7 @@ public class TowardsMovement : MonoBehaviour
 
     void Update()
     {
+        //untuk menggerakan circle menuju mouse
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         transform.position = Vector2.SmoothDamp(transform.position, mousePosition, ref currentVelocity, smoothTime, maxMoveSpeed); 
     }
